@@ -52,7 +52,7 @@ Dispositivo Android com versão 4.4 ou superior ou emulador configurado
 
 @jeadamek 
 
-@joaovictorsrl
+[@joaovictorsl](https://github.com/joaovictorsl)
 
 @on-ferreira
 
