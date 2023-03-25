@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ADA Free to Play Games</string>
+    <string name="game_extra_key">GAME_EXTRA_KEY</string>
 </resources>
