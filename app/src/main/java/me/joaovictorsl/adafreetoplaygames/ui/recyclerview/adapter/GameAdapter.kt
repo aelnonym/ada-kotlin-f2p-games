@@ -1,5 +1,6 @@
 package me.joaovictorsl.adafreetoplaygames.ui.recyclerview.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,7 @@ import com.bumptech.glide.Glide
 import me.joaovictorsl.adafreetoplaygames.R
 import me.joaovictorsl.adafreetoplaygames.databinding.GameItemBinding
 import me.joaovictorsl.adafreetoplaygames.model.Game
+import me.joaovictorsl.adafreetoplaygames.ui.gamedetail.GameDetailActivity
 
 class GameAdapter(
     gameList: List<Game> = listOf()
@@ -19,12 +21,20 @@ class GameAdapter(
         private val tvGameTitle = binding.gameItemTitle
 
         fun bind(g: Game) {
+            val context = binding.root.context
             tvGameTitle.text = g.title
-            Glide.with(binding.root.context)
+            Glide.with(context)
                 .load(g.thumbnail)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_background)
                 .into(ivGameThumbnail)
+
+            binding.root.setOnClickListener {
+                val intent = Intent(context, GameDetailActivity::class.java).apply {
+                    putExtra(context.getString(R.string.game_extra_key), g)
+                }
+                context.startActivity(intent)
+            }
         }
     }
 

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ADA Free to Play Games</string>
+    <string name="game_extra_key">GAME_EXTRA_KEY</string>
+
+    <!--    Detail Screen-->
+    <string name="detail_publisher">Publisher: %s</string>
+    <string name="detail_developer">Developer: %s</string>
+    <string name="detail_release_date">Release date: %s</string>
+    <string name="detail_status">Status: %s</string>
+    <string name="detail_genre">Genre: %s</string>
+    <string name="detail_platform">Platform: %s</string>
+    <string name="detail_image_description">Game Thumbnail</string>
+    <string name="detail_os">OS: %s</string>
+    <string name="detail_processor">Processor: %s</string>
+    <string name="detail_memory">Memory: %s</string>
+    <string name="detail_graphics">Graphics: %s</string>
+    <string name="detail_storage">Storage: %s</string>
+    <string name="screenshot_slide_marker_content_description">Screenshot slide marker</string>
+    <string name="screenshot_content_description">Screenshot of the game</string>
 </resources>
