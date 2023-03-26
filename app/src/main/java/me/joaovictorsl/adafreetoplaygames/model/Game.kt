@@ -1,11 +1,15 @@
 package me.joaovictorsl.adafreetoplaygames.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "games")
 @Parcelize
 data class Game(
+    @PrimaryKey
     val id: Int = 540,
     val title: String = "DEFAULT | Overwatch 2",
     val thumbnail: String = "https://www.freetogame.com/g/540/thumbnail.jpg",
