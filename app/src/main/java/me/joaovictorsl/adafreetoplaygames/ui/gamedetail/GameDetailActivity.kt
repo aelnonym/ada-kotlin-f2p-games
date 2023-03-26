@@ -1,5 +1,7 @@
 package me.joaovictorsl.adafreetoplaygames.ui.gamedetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,6 +41,12 @@ class GameDetailActivity : AppCompatActivity() {
     private fun setClickListeners() {
         binding.gameDetailInfoSection.apply {
             tvDescriptionSeeMore.setOnClickListener(SeeMoreTextViewClickListener(tvDescription))
+        }
+
+        binding.visitBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(game.gameUrl)
+            startActivity(intent)
         }
     }
 
