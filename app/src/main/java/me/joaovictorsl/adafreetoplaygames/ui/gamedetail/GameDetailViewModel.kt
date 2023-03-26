@@ -1,6 +1,5 @@
 package me.joaovictorsl.adafreetoplaygames.ui.gamedetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +21,6 @@ class GameDetailViewModel(private val gameId: Int) : ViewModel() {
     init {
         viewModelScope.launch {
             val res = freeToGameService.getGameById(gameId)
-            Log.i("GameDetailViewModel", res.toString())
             withContext(Dispatchers.Main) { _game.value = res }
         }
     }
