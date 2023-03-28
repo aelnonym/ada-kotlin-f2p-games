@@ -7,6 +7,9 @@ interface GameDao {
     @Query("SELECT * FROM games")
     suspend fun getAllGames(): List<Game>
 
+    @Query("SELECT * FROM games WHERE id = :id")
+    suspend fun getGameById(id: Int): Game?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: Game)
 
