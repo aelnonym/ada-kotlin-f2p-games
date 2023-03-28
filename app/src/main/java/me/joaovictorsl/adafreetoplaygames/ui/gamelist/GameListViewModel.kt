@@ -1,18 +1,13 @@
 package me.joaovictorsl.adafreetoplaygames.ui.gamelist
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.joaovictorsl.adafreetoplaygames.model.Game
-import me.joaovictorsl.adafreetoplaygames.network.FreeToGameService
-import me.joaovictorsl.adafreetoplaygames.network.getRetrofitInstance
+import me.joaovictorsl.adafreetoplaygames.model.GameRepository
 
-class GameListViewModel : ViewModel() {
-    private val freeToGameService = getRetrofitInstance("https://www.freetogame.com/api/").create(FreeToGameService::class.java)
+class GameListViewModel (private val repository: GameRepository) : ViewModel() {
 
     private val _gameList = MutableLiveData<List<Game>>()
     val gameList: LiveData<List<Game>>
@@ -20,7 +15,7 @@ class GameListViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            val res = freeToGameService.getAllGames()
+            val res = repository.getGames()
             withContext(Dispatchers.Main) { _gameList.value = res }
         }
     }

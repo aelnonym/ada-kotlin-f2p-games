@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.joaovictorsl.adafreetoplaygames.model.Game
 import me.joaovictorsl.adafreetoplaygames.network.FreeToGameService
+import me.joaovictorsl.adafreetoplaygames.network.RetrofitInstance
 import me.joaovictorsl.adafreetoplaygames.network.getRetrofitInstance
 
 class GameDetailViewModel(private val gameId: Int) : ViewModel() {
-    private val freeToGameService = getRetrofitInstance("https://www.freetogame.com/api/").create(FreeToGameService::class.java)
+    private val freeToGameService = RetrofitInstance.api
 
     private val _game = MutableLiveData<Game>()
     val game: LiveData<Game>
