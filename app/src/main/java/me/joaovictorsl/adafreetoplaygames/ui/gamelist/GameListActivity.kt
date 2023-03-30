@@ -6,10 +6,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.joaovictorsl.adafreetoplaygames.databinding.ActivityGameListBinding
-import me.joaovictorsl.adafreetoplaygames.model.GameDao
-import me.joaovictorsl.adafreetoplaygames.model.GameDatabase
-import me.joaovictorsl.adafreetoplaygames.model.GameRepository
-import me.joaovictorsl.adafreetoplaygames.network.RetrofitInstance
+import me.joaovictorsl.adafreetoplaygames.database.GameDao
+import me.joaovictorsl.adafreetoplaygames.database.GameDatabase
+import me.joaovictorsl.adafreetoplaygames.repository.GameRepository
 import me.joaovictorsl.adafreetoplaygames.ui.recyclerview.adapter.GameAdapter
 
 
@@ -28,23 +27,18 @@ class GameListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("GameListActivity", "onCreate() started")
+        GameDatabase.initialize(applicationContext)
         setContentView(binding.root)
 
         configViewModel()
         configRecyclerView()
-
-
     }
 
     private fun configViewModel() {
-        Log.d("GameListActivity", "configViewModel() started")
-
-        dao = GameDatabase.getInstance(applicationContext).gameDao()
-        gameRepository = GameRepository(dao, RetrofitInstance.api)
+        gameRepository = GameRepository()
         factory = GameListViewModelFactory(gameRepository)
-        ViewModelProvider(this, factory)[GameListViewModel::class.java]
 
+        viewModel = ViewModelProvider(this, factory)[GameListViewModel::class.java]
 
         viewModel.gameList.observe(this) { updatedGameList ->
             gameListAdapter.setNewList(updatedGameList)

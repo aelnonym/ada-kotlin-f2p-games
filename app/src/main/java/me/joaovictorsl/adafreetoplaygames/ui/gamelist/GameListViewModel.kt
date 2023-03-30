@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.joaovictorsl.adafreetoplaygames.model.Game
-import me.joaovictorsl.adafreetoplaygames.model.GameRepository
+import me.joaovictorsl.adafreetoplaygames.repository.GameRepository
 
 class GameListViewModel (private val repository: GameRepository) : ViewModel() {
 

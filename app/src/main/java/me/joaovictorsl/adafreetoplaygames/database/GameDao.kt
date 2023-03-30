@@ -1,6 +1,7 @@
-package me.joaovictorsl.adafreetoplaygames.model
+package me.joaovictorsl.adafreetoplaygames.database
 
 import androidx.room.*
+import me.joaovictorsl.adafreetoplaygames.model.Game
 
 @Dao
 interface GameDao {
@@ -14,7 +15,7 @@ interface GameDao {
     suspend fun insertGame(game: Game)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(games: List<Game>)
+    suspend fun insertAll(vararg games: Game)
 
     @Delete
     suspend fun deleteGame(game: Game)
