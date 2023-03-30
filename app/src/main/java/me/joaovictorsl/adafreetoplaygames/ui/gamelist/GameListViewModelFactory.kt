@@ -2,7 +2,7 @@ package me.joaovictorsl.adafreetoplaygames.ui.gamelist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import me.joaovictorsl.adafreetoplaygames.model.GameRepository
+import me.joaovictorsl.adafreetoplaygames.repository.GameRepository
 
 class GameListViewModelFactory (val repository: GameRepository) : ViewModelProvider.Factory  {
 
